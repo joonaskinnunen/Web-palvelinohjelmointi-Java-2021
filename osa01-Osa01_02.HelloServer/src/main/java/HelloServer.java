@@ -27,7 +27,9 @@ public class HelloServer {
             kirjoittaja.write(content);
 
             // vapautetaan resurssit
+  
             lukija.close();
+            kirjoittaja.flush();
             kirjoittaja.close();
             socket.close();
         }
