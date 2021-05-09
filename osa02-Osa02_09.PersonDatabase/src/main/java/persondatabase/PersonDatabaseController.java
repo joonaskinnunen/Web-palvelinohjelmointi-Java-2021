@@ -9,11 +9,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class PersonDatabaseController {
-
+    
+    @Autowired
+    private PersonRepository personRepository;
 
     @GetMapping("/")
-    public String home(Model model) {
+    public String list(Model model) {
+        model.addAttribute("persons", this.personRepository.findAll());
         return "index";
+    }
+    
+    @PostMapping("/")
+    public String post(@RequestParam String name) {
+        this.personRepository.save(new Person(name));
+        return "redirect:/";
     }
 
 }
