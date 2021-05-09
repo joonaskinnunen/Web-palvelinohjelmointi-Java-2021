@@ -8,4 +8,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class SquareController {
 
+    @GetMapping("/square")
+    @ResponseBody
+    public Integer calcSquare(@RequestParam Integer num) {
+        return num * num;
+    }
 }
