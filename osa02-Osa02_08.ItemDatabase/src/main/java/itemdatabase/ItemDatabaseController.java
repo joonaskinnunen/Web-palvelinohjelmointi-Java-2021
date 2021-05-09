@@ -18,5 +18,11 @@ public class ItemDatabaseController {
         model.addAttribute("items", this.itemRepository.findAll());
         return "index";
     }
+    
+    @PostMapping("/")
+    public String post(@RequestParam String name) {
+        this.itemRepository.save(new Item(name));
+        return "redirect:/";
+    }
 
 }
